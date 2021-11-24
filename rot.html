@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>rotten</title>
+	<style>
+		body {
+			background: black;
+		}
+
+		input {
+			width: auto;
+		}
+	</style>
+	<script>
+		function rot13(letter) {
+			var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+			return alphabet[(alphabet.indexOf(letter.toLowerCase()) + 13) % 26];
+		}
+
+		function rep(field, event) {
+			var textField = document.getElementById(field);
+			if (90 >= event.keyCode || 65 <= event.keyCode) {
+				textField.value += rot13(String.fromCharCode(event.keyCode));
+			}
+		}
+	</script>
+</head>
+<body>
+	<input id="rotUser" placeholder="username"/>
+	<input id="username" onkeypress="rep('username', event)"  placeholder="username"/>
+	<input id="password" onkeypress="rep('password', event)" placeholder="password"/>
+</body>
+</html>

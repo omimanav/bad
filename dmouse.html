@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>diagonal mouse</title>
+	<style>
+		input[type="checkbox"] {
+			cursor: default;
+		}
+		
+		#curse {
+			display: inline-block;
+			position: absolute;
+			background: white;
+			border-radius: 50%;
+			width: 2px;
+			height: 2px;
+			transform: translate(-50%, -50%);
+			pointer-events: none;
+			box-shadow: 0px 0px 5px #000;
+		}
+
+		div {
+			padding: 0;
+			margin: 0;
+			width: 100vw;
+			height: 100vh;
+		}
+
+		body, html, div, label {
+			cursor: none;
+		}
+	</style>
+</head>
+<body>
+	<span id="curse"></span>
+	<div>
+		<label for="name">Check to confirm this is a bad UI</label>
+		<input name="name" type="checkbox"/>
+	<div>
+	<script>
+		var cursor = document.getElementById("curse");
+		window.addEventListener("mousemove", function(e) {
+			cursor.style.top = `${e.pageY}px`;
+			cursor.style.left = `${e.pageX}px`;
+			console.log(e.pageY);
+		});
+	</script>
+</body>
+</html>
